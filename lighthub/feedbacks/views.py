@@ -19,10 +19,12 @@ def surveyAnswer(request, survey_id):
     return render(request, 'feedbacks/details.html', {'surveyAnswered' : survey})
 
 def answerDetail(request, question_id):
-    print("qution :" + str(question_id))
+    # print("referer : " + request.META.get('HTTP_REFERER'))
+    path = request.META.get('HTTP_REFERER')
+    # print("qution :" + str(question_id))
     survey_id = request.GET.get('survey_id')
-    path = request.GET.get('path')
-    print("survey :" + str(survey_id))
-    print("path :" + str(path))
+    # path = request.GET.get('path')
+    # print("path :" + str(path))
+    # print("survey :" + str(survey_id))
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'feedbacks/details.html', {'question' : question, "refererPath" : path})

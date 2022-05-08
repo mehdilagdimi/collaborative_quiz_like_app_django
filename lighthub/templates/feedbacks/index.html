@@ -8,7 +8,7 @@
             <p class="p-3">{{ q.question }}</p>
             <!-- <p class="p-3">{{ q.technology }}</p> -->
             <div class="bg-green-400 border-green-500 border h-10 w-24 text-center">
-                <a href="{% url 'feedbacks:answerDetail' question_id=q.id %}?survey_id={{survey_id}}&path={{request.path|urlencode}}"
+                <a href="{% url 'feedbacks:answerDetail' question_id=q.id %}?survey_id={{survey_id}}"
                     class="w-full h-full flex justify-center items-center">Detail</a>
             </div>
         </div>

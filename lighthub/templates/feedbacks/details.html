@@ -20,7 +20,7 @@
             {% if refererPath %}
             <!-- You can call url by its name or by using appname:controllerMethod -->
             <div class="bg-green-400 border-green-500 border h-10 w-24 text-center">
-                <a href="{{url redirectBack referer=refererPath}}"
+                <a href="{% url 'redirectBack' referer=refererPath %}"
                     class="w-full h-full flex justify-center items-center">Back</a>
             </div>
             {% endif %}
