@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="w-5/6 mx-auto bg-gray-300 p-4">
+    <div class="bg-gray-300 p-3 flex flex-col items-center justify-center">
+        {% if question %}
+        
+        <div class="w-full border-2 border-gray-200 p-2 m-2">
+            <p class="p-1">Answer :  {{ question.correctAnswer }}</p>
+            <p class="p-1">Domain :  {{ question.technology }}</p>
+            
+        </div>
+    
+        {% else %}
+        <p class="p-3">No details was found </p>
+        {% endif %}
+    </div>
+    <div class="flex justify-end px-4">
+        <form action="" class="text-center">
+            {% csrf_token %}
+            {% if refererPath %}
+            <!-- You can call url by its name or by using appname:controllerMethod -->
+            <div class="bg-green-400 border-green-500 border h-10 w-24 text-center">
+                <a href="{{url redirectBack referer=refererPath}}"
+                    class="w-full h-full flex justify-center items-center">Back</a>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}

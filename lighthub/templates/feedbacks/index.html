@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="w-5/6 h-[500px] mx-auto bg-gray-300 p-4">
+    <div class="bg-gray-300 p-3 flex flex-col items-center justify-center">
+        {% if surveyQuestions %}
+        {% for q in surveyQuestions %}
+        <div class="w-full border-2 border-gray-200 p-2 m-2">
+            <p class="p-3">{{ q.question }}</p>
+            <!-- <p class="p-3">{{ q.technology }}</p> -->
+            <div class="bg-green-400 border-green-500 border h-10 w-24 text-center">
+                <a href="{% url 'feedbacks:answerDetail' question_id=q.id %}?survey_id={{survey_id}}&path={{request.path|urlencode}}"
+                    class="w-full h-full flex justify-center items-center">Detail</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="p-3">No questions were found for this survey</p>
+        {% endif %}
+    </div>
+    <div class="flex justify-end px-4">
+        <form action="" class="text-center">
+            {% csrf_token %}
+            {% if survey_id %}
+            <!-- You can call url by its name or by using appname:controllerMethod -->
+            <div class="bg-green-400 border-green-500 border h-10 w-24 text-center">
+                <a href="{% url 'feedbacks:surveyAnswer' survey_id %}"
+                    class="w-full h-full flex justify-center items-center">Evaluate</a>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}
